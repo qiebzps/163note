@@ -15,15 +15,15 @@ speed = [1,1]                                   # 做为小球移动的速度，
 BLACK = 0,0,0                                   # 黑色RGB
 screen = pygame.display.set_mode(size)          # 设置screen的大小为size
 pygame.display.set_caption("Pygame壁球")        # 标题
-ball = pygame.image.load("PYG02-ball.gif")      # 加载小球gif
-ballrect = ball.get_rect()                      # ooooooooooooooooooooooooo
+ball = pygame.image.load("PYG02-ball.gif")      # 加载小球gif,支持JPG,PNG,GIF(非动画)等13种常用图片格式
+ballrect = ball.get_rect()                      # Pygame使用内部定义的Surface对象表示所有载入的图像，.get_rect()方法返回一个覆盖图像的矩形Rect对象
 
 while True:                                     # mainloop
     for event in pygame.event.get():            # 获取事件
         if event.type == pygame.QUIT:           # 响应退出事件
             pygame.quit()
             sys.exit()
-    ballrect = ballrect.move(speed[0], speed[1])# 重置ballrect
+    ballrect = ballrect.move(speed[0], speed[1])# 矩形移动一个偏移量（speed[0],speed[1]）
     if ballrect.left == 0 or ballrect.right == width:     # 碰壁处理x轴
         speed[0] = -speed[0]
     if ballrect.top == 0 or ballrect.bottom == height:    # 碰壁处理y轴
